@@ -11,6 +11,9 @@ import {
   TrendingUp,
   MessageCircle,
   ChevronUp,
+  ChevronDown,
+  ChevronLeft,
+  ChevronRight,
   Phone,
   Mail,
   MapPin,
@@ -285,15 +288,15 @@ const Benefits = () => {
           </p>
         </FadeIn>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
           {benefits.map((benefit, idx) => (
-            <FadeIn key={idx} delay={idx * 0.1}>
-              <div className="bg-slate-800/50 border border-slate-700 p-8 rounded-2xl hover:bg-slate-800 transition-colors">
-                <div className="w-14 h-14 bg-orange-500/20 text-orange-400 rounded-xl flex items-center justify-center mb-6">
+            <FadeIn key={idx} delay={idx * 0.1} className="h-full">
+              <div className="bg-slate-800/50 border border-slate-700 p-8 rounded-2xl hover:bg-slate-800 transition-colors h-full flex flex-col">
+                <div className="w-14 h-14 bg-orange-500/20 text-orange-400 rounded-xl flex items-center justify-center mb-6 shrink-0">
                   {benefit.icon}
                 </div>
                 <h3 className="text-xl font-bold mb-3">{benefit.title}</h3>
-                <p className="text-slate-400 leading-relaxed">{benefit.desc}</p>
+                <p className="text-slate-400 leading-relaxed flex-grow">{benefit.desc}</p>
               </div>
             </FadeIn>
           ))}
@@ -413,7 +416,7 @@ const About = () => {
   return (
     <section id="about" className="py-12 md:py-24 bg-slate-900 text-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-16 items-center mb-20 md:mb-32">
           <FadeIn className="order-2 lg:order-1">
             <h2 className="text-3xl md:text-5xl font-heading font-bold mb-6">
               Кой съм аз?
@@ -450,6 +453,109 @@ const About = () => {
             </div>
           </FadeIn>
         </div>
+
+        <FadeIn className="text-center mb-12 md:mb-16">
+          <h2 className="text-3xl md:text-5xl font-heading font-bold mb-6">
+            Запознай се с част от екипа
+          </h2>
+        </FadeIn>
+
+        <div className="grid md:grid-cols-2 gap-8 items-stretch">
+          <FadeIn delay={0.1} className="bg-slate-800/50 rounded-3xl p-8 border border-slate-700 flex flex-col h-full hover:bg-slate-800 transition-colors">
+            <div className="flex items-center gap-6 mb-8">
+              <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-slate-700 border-2 border-slate-600 flex-shrink-0 flex items-center justify-center overflow-hidden">
+                <img src="https://i.ibb.co/dwK59Wts/DANIELA.jpg" alt="Даниела Марковска" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+              </div>
+              <div>
+                <h3 className="text-xl md:text-2xl text-orange-400 font-medium mb-1">Даниела Марковска</h3>
+                <p className="text-slate-400 text-sm md:text-base">Партньор</p>
+              </div>
+            </div>
+            <div className="text-slate-300 text-base md:text-lg leading-relaxed flex-grow flex flex-col">
+              <p className="mb-4">За мен това не е просто работа. Това е начин да:</p>
+              <ul className="space-y-2 mb-8 ml-5 list-disc marker:text-orange-500">
+                <li>се развивам</li>
+                <li>помагам на хората</li>
+                <li>изграждам живот по свои правила</li>
+              </ul>
+              <p className="mt-auto pt-6 border-t border-slate-700/50 font-medium text-white">
+                С LR Health & Beauty имам възможност за свобода и развитие.
+              </p>
+            </div>
+          </FadeIn>
+
+          <FadeIn delay={0.2} className="bg-slate-800/50 rounded-3xl p-8 border border-slate-700 flex flex-col h-full hover:bg-slate-800 transition-colors">
+            <div className="flex items-center gap-6 mb-8">
+              <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-slate-700 border-2 border-slate-600 flex-shrink-0 flex items-center justify-center overflow-hidden">
+                <img src="https://i.ibb.co/KRKXSxq/VIKTORIA.jpg" alt="Виктория Ангелова" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+              </div>
+              <div>
+                <h3 className="text-xl md:text-2xl text-orange-400 font-medium mb-1">Виктория Ангелова</h3>
+                <p className="text-slate-400 text-sm md:text-base">Партньор</p>
+              </div>
+            </div>
+            <div className="text-slate-300 text-base md:text-lg leading-relaxed flex-grow flex flex-col">
+              <p className="mb-4">В майчинство съм с малко бебе и търсех начин да изкарвам доход от вкъщи. Започнах с LR Health & Beauty, за да имам:</p>
+              <ul className="space-y-2 mb-8 ml-5 list-disc marker:text-orange-500">
+                <li>гъвкаво време</li>
+                <li>повече време с детето</li>
+                <li>допълнителен доход</li>
+              </ul>
+              <p className="mt-auto pt-6 border-t border-slate-700/50 font-medium text-white">
+                Това е първата ми стъпка към финансова независимост.
+              </p>
+            </div>
+          </FadeIn>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const VideoSection = () => {
+  return (
+    <section id="videos" className="py-12 md:py-24 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <FadeIn className="text-center mb-12 md:mb-16">
+          <h2 className="text-3xl md:text-5xl font-heading font-bold text-slate-900 mb-6">
+            Научете повече за LR
+          </h2>
+          <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+            Вижте как работи бизнес моделът и се запознайте с нашите висококачествени продукти.
+          </p>
+        </FadeIn>
+
+        <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
+          <FadeIn delay={0.1} className="flex flex-col">
+            <h3 className="text-2xl font-bold text-slate-900 mb-4 text-center">Бизнес моделът на LR</h3>
+            <div className="relative w-full aspect-video bg-slate-100 rounded-3xl overflow-hidden shadow-lg border border-slate-200">
+              <iframe 
+                className="absolute inset-0 w-full h-full"
+                src="https://www.youtube.com/embed/dCGUVkG3Efg?start=4" 
+                title="Бизнес моделът на LR" 
+                frameBorder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                referrerPolicy="strict-origin-when-cross-origin" 
+                allowFullScreen
+              ></iframe>
+            </div>
+          </FadeIn>
+
+          <FadeIn delay={0.2} className="flex flex-col">
+            <h3 className="text-2xl font-bold text-slate-900 mb-4 text-center">Продуктите на LR</h3>
+            <div className="relative w-full aspect-video bg-slate-100 rounded-3xl overflow-hidden shadow-lg border border-slate-200">
+              <iframe 
+                className="absolute inset-0 w-full h-full"
+                src="https://www.youtube.com/embed/SBSxnxQP9k0" 
+                title="Продуктите на LR" 
+                frameBorder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                referrerPolicy="strict-origin-when-cross-origin" 
+                allowFullScreen
+              ></iframe>
+            </div>
+          </FadeIn>
+        </div>
       </div>
     </section>
   );
@@ -462,7 +568,7 @@ const Products = () => {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <FadeIn>
             <div className="grid grid-cols-2 gap-4">
-              <img src="https://images.unsplash.com/photo-1611078516081-306731998394?q=80&w=1974&auto=format&fit=crop" alt="Health products" referrerPolicy="no-referrer" className="rounded-2xl shadow-md h-64 w-full object-cover" />
+              <img src="https://i.ibb.co/fYJSbrhy/image.png" alt="Health products" referrerPolicy="no-referrer" className="rounded-2xl shadow-md h-64 w-full object-cover" />
               <img src="https://images.unsplash.com/photo-1550831107-1553da8c8464?q=80&w=1974&auto=format&fit=crop" alt="Beauty products" referrerPolicy="no-referrer" className="rounded-2xl shadow-md h-64 w-full object-cover mt-8" />
             </div>
           </FadeIn>
@@ -491,9 +597,11 @@ const Products = () => {
                 </li>
               ))}
             </ul>
-            <a href="#contact" className="inline-flex justify-center items-center gap-2 bg-slate-900 hover:bg-slate-800 text-white px-8 py-4 rounded-xl text-lg font-semibold transition-all">
-              Искам безплатна консултация
-            </a>
+            <div className="flex justify-center lg:justify-start">
+              <a href="#contact" className="inline-flex justify-center items-center gap-2 bg-slate-900 hover:bg-slate-800 text-white px-6 py-3 md:px-8 md:py-4 rounded-xl text-base md:text-lg font-semibold transition-all">
+                Искам безплатна консултация
+              </a>
+            </div>
           </FadeIn>
         </div>
       </div>
@@ -502,6 +610,8 @@ const Products = () => {
 };
 
 const Testimonials = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
   const testimonials = [
     {
       text: "Благодарение на Атанас и системата, успях да генерирам допълнителен доход още на втория месец. Подкрепата е невероятна и винаги има към кого да се обърна!",
@@ -515,6 +625,14 @@ const Testimonials = () => {
     }
   ];
 
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  };
+
   return (
     <section className="py-12 md:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -524,16 +642,17 @@ const Testimonials = () => {
           </h2>
         </FadeIn>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        {/* Desktop Grid */}
+        <div className="hidden md:grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {testimonials.map((test, idx) => (
-            <FadeIn key={idx} delay={idx * 0.2}>
-              <div className="bg-slate-50 p-8 md:p-10 rounded-3xl border border-slate-100 relative">
+            <FadeIn key={idx} delay={idx * 0.2} className="h-full">
+              <div className="bg-slate-50 p-8 md:p-10 rounded-3xl border border-slate-100 relative h-full flex flex-col">
                 <div className="flex gap-1 text-orange-400 mb-6">
                   {[...Array(5)].map((_, i) => <Star key={i} size={20} fill="currentColor" />)}
                 </div>
-                <p className="text-slate-700 text-lg italic mb-8">"{test.text}"</p>
+                <p className="text-slate-700 text-lg italic mb-8 flex-grow">"{test.text}"</p>
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-slate-200 rounded-full flex items-center justify-center text-slate-500 font-bold text-xl">
+                  <div className="w-12 h-12 bg-slate-200 rounded-full flex items-center justify-center text-slate-500 font-bold text-xl shrink-0">
                     {test.author.charAt(0)}
                   </div>
                   <div>
@@ -545,13 +664,157 @@ const Testimonials = () => {
             </FadeIn>
           ))}
         </div>
+
+        {/* Mobile Slider */}
+        <div className="md:hidden max-w-md mx-auto relative">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentIndex}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.3 }}
+              className="bg-slate-50 p-8 rounded-3xl border border-slate-100 relative flex flex-col min-h-[300px]"
+            >
+              <div className="flex gap-1 text-orange-400 mb-6">
+                {[...Array(5)].map((_, i) => <Star key={i} size={20} fill="currentColor" />)}
+              </div>
+              <p className="text-slate-700 text-lg italic mb-8 flex-grow">"{testimonials[currentIndex].text}"</p>
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-slate-200 rounded-full flex items-center justify-center text-slate-500 font-bold text-xl shrink-0">
+                  {testimonials[currentIndex].author.charAt(0)}
+                </div>
+                <div>
+                  <p className="font-bold text-slate-900">{testimonials[currentIndex].author}</p>
+                  <p className="text-sm text-slate-500">{testimonials[currentIndex].role}</p>
+                </div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+
+          <div className="flex justify-center items-center gap-6 mt-8">
+            <button 
+              onClick={prevSlide}
+              className="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-orange-100 hover:text-orange-500 transition-colors"
+              aria-label="Предишно ревю"
+            >
+              <ChevronLeft size={24} />
+            </button>
+            <div className="flex gap-2">
+              {testimonials.map((_, idx) => (
+                <div 
+                  key={idx} 
+                  className={`w-2.5 h-2.5 rounded-full transition-colors ${idx === currentIndex ? 'bg-orange-500' : 'bg-slate-200'}`}
+                />
+              ))}
+            </div>
+            <button 
+              onClick={nextSlide}
+              className="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 hover:bg-orange-100 hover:text-orange-500 transition-colors"
+              aria-label="Следващо ревю"
+            >
+              <ChevronRight size={24} />
+            </button>
+          </div>
+        </div>
       </div>
     </section>
   );
 };
 
+const FAQ = () => {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  const faqs = [
+    {
+      question: "Как да започна собствен бизнес с LR Health & Beauty?",
+      answer: "Стартирането на бизнес с LR е лесно и не изисква голям начален капитал. Получавате достъп до доказана система за обучение, личен ментор и висококачествени продукти. Можете да работите от вкъщи и да изградите стабилен пасивен доход."
+    },
+    {
+      question: "Какво прави продуктите на LR уникални и качествени?",
+      answer: "Продуктите на LR са произведени в Германия (Made in Germany) и преминават строг контрол на качеството от независими институти като SGS Institut Fresenius. Особено популярни са нашите сертифицирани гелове за пиене с Алое Вера, иновативна козметика и парфюми."
+    },
+    {
+      question: "Колко пари мога да спечеля като партньор на LR?",
+      answer: "Доходът ви зависи изцяло от вашата активност и отдаденост. Бизнес моделът на LR (мрежов маркетинг) предлага неограничени възможности – от допълнителен доход от няколкостотин лева до финансова независимост и уникална автомобилна концепция при постигане на определени нива."
+    },
+    {
+      question: "Трябва ли да имам опит в продажбите или мрежовия маркетинг?",
+      answer: "Не, не ви е необходим предишен опит. Ние предоставяме пълно обучение, готови стратегии за дигитален маркетинг и постоянна подкрепа от екипа. Успехът ви се гради на искрената препоръка на продукти, които сами ползвате и харесвате."
+    },
+    {
+      question: "Има ли задължителни месечни покупки?",
+      answer: "Не, в LR няма задължителни месечни покупки или скрити такси. Вие сами решавате кога и колко да поръчвате, спрямо вашите нужди и целите на вашия бизнес."
+    }
+  ];
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  };
+
+  return (
+    <section id="faq" className="py-12 md:py-24 bg-slate-50">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <FadeIn className="text-center mb-10 md:mb-16">
+          <h2 className="text-3xl md:text-5xl font-heading font-bold text-slate-900 mb-6">
+            Често задавани въпроси
+          </h2>
+          <p className="text-lg text-slate-600">
+            Всичко, което трябва да знаете за бизнес възможността и продуктите на LR Health & Beauty.
+          </p>
+        </FadeIn>
+
+        <div className="space-y-4">
+          {faqs.map((faq, idx) => (
+            <FadeIn key={idx} delay={idx * 0.1}>
+              <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+                <button
+                  onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
+                  className="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none"
+                  aria-expanded={openIndex === idx}
+                >
+                  <h3 className="text-lg font-semibold text-slate-900 pr-8">{faq.question}</h3>
+                  <ChevronDown 
+                    className={`text-orange-500 shrink-0 transition-transform duration-300 ${openIndex === idx ? 'rotate-180' : ''}`} 
+                    size={24} 
+                  />
+                </button>
+                <AnimatePresence>
+                  {openIndex === idx && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <div className="px-6 pb-5 text-slate-600 leading-relaxed">
+                        {faq.answer}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+      {/* SEO Schema Markup */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+    </section>
+  );
+};
+
 const Contact = () => {
-  const [formData, setFormData] = useState({ name: '', phone: '', email: '' });
+  const [formData, setFormData] = useState({ name: '', phone: '', email: '', income: '' });
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -559,37 +822,37 @@ const Contact = () => {
     // Simulate form submission
     setTimeout(() => {
       setIsSubmitted(true);
-      setFormData({ name: '', phone: '', email: '' });
+      setFormData({ name: '', phone: '', email: '', income: '' });
     }, 800);
   };
 
   return (
-    <section id="contact" className="py-12 md:py-24 bg-slate-900 relative overflow-hidden">
+    <section id="contact" className="py-10 md:py-24 bg-slate-900 relative overflow-hidden">
       <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1557683316-973673baf926?q=80&w=2029&auto=format&fit=crop')] opacity-10 bg-cover bg-center"></div>
       
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
           <div className="grid md:grid-cols-5">
-            <div className="md:col-span-2 bg-gradient-to-br from-orange-500 to-orange-600 p-10 text-white flex flex-col justify-between">
+            <div className="md:col-span-2 bg-gradient-to-br from-orange-500 to-orange-600 p-6 md:p-10 text-white flex flex-col justify-between">
               <div>
-                <h3 className="text-3xl font-heading font-bold mb-4">Направи първата крачка</h3>
-                <p className="text-orange-100 mb-8">
+                <h3 className="text-2xl md:text-3xl font-heading font-bold mb-2 md:mb-4">Направи първата крачка</h3>
+                <p className="text-orange-100 text-sm md:text-base mb-6 md:mb-8">
                   Остави своите контакти и аз ще се свържа с теб лично, за да обсъдим как можем да работим заедно.
                 </p>
               </div>
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
-                  <Phone size={20} className="text-orange-200" />
-                  <span>0894 959 255</span>
+                  <Phone size={20} className="text-orange-200 shrink-0" />
+                  <span className="text-sm md:text-base">0894 959 255</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <Mail size={20} className="text-orange-200" />
-                  <span className="break-all">atanas1978online@gmail.com</span>
+                  <Mail size={20} className="text-orange-200 shrink-0" />
+                  <span className="break-all text-sm md:text-base">atanas1978online@gmail.com</span>
                 </div>
               </div>
             </div>
             
-            <div className="md:col-span-3 p-10">
+            <div className="md:col-span-3 p-6 md:p-10">
               {isSubmitted ? (
                 <div className="h-full flex flex-col items-center justify-center text-center space-y-4 py-10">
                   <div className="w-16 h-16 bg-green-100 text-green-500 rounded-full flex items-center justify-center mb-4">
@@ -605,50 +868,65 @@ const Contact = () => {
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-2">Име и фамилия</label>
+                    <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-1 md:mb-2">Име и фамилия</label>
                     <input 
                       type="text" 
                       id="name" 
                       required
                       value={formData.name}
                       onChange={(e) => setFormData({...formData, name: e.target.value})}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-all"
+                      className="w-full px-3 py-2.5 md:px-4 md:py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-all text-sm md:text-base"
                       placeholder="Иван Иванов"
                     />
                   </div>
                   <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-slate-700 mb-2">Телефон за връзка</label>
+                    <label htmlFor="phone" className="block text-sm font-medium text-slate-700 mb-1 md:mb-2">Телефон за връзка</label>
                     <input 
                       type="tel" 
                       id="phone" 
                       required
                       value={formData.phone}
                       onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-all"
+                      className="w-full px-3 py-2.5 md:px-4 md:py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-all text-sm md:text-base"
                       placeholder="08XX XXX XXX"
                     />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-2">Имейл адрес</label>
+                    <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-1 md:mb-2">Имейл адрес</label>
                     <input 
                       type="email" 
                       id="email" 
                       required
                       value={formData.email}
                       onChange={(e) => setFormData({...formData, email: e.target.value})}
-                      className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-all"
+                      className="w-full px-3 py-2.5 md:px-4 md:py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-all text-sm md:text-base"
                       placeholder="ivan@example.com"
                     />
                   </div>
+                  <div>
+                    <label htmlFor="income" className="block text-sm font-medium text-slate-700 mb-1 md:mb-2">Какъв доход искате да изкарвате?</label>
+                    <select 
+                      id="income" 
+                      required
+                      value={formData.income}
+                      onChange={(e) => setFormData({...formData, income: e.target.value})}
+                      className="w-full px-3 py-2.5 md:px-4 md:py-3 rounded-xl border border-slate-200 focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition-all bg-white text-sm md:text-base"
+                    >
+                      <option value="" disabled>Изберете желаният доход</option>
+                      <option value="200-500 евро">200-500 евро</option>
+                      <option value="500-1000 евро">500-1000 евро</option>
+                      <option value="1000+ евро">1000+ евро</option>
+                    </select>
+                  </div>
                   <button 
                     type="submit" 
-                    className="w-full bg-slate-900 hover:bg-slate-800 text-white px-8 py-4 rounded-xl text-lg font-semibold transition-all shadow-lg mt-4"
+                    className="w-full bg-slate-900 hover:bg-slate-800 text-white px-6 py-3 md:px-8 md:py-4 rounded-xl text-base md:text-lg font-semibold transition-all shadow-lg mt-2 md:mt-4"
                   >
                     Изпрати заявка
                   </button>
-                  <p className="text-xs text-center text-slate-500 mt-4">
+                  <p className="text-xs text-center text-slate-500 mt-2 md:mt-4">
                     Вашите данни са защитени и ще бъдат използвани само за връзка с вас.
                   </p>
                 </form>
@@ -693,8 +971,13 @@ const Footer = () => {
           </div>
         </div>
         <div className="pt-8 border-t border-slate-800 text-sm text-center flex flex-col md:flex-row justify-between items-center gap-4">
-          <p>&copy; {new Date().getFullYear()} Атанас Атанасов. Всички права запазени.</p>
-          <p className="text-xs text-slate-500">
+          <div className="flex flex-col items-center md:items-start gap-2">
+            <p>&copy; {new Date().getFullYear()} Атанас Атанасов. Всички права запазени.</p>
+            <p className="text-xs text-slate-500">
+              Изработен от <a href="https://www.estudio.bg/" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-orange-400 transition-colors">estudio.bg</a>
+            </p>
+          </div>
+          <p className="text-xs text-slate-500 max-w-xs md:text-right">
             Този сайт е собственост на независим партньор и не е официален сайт на LR Health & Beauty.
           </p>
         </div>
@@ -764,8 +1047,10 @@ export default function App() {
         <TargetAudience />
         <HowItWorks />
         <About />
+        <VideoSection />
         <Products />
         <Testimonials />
+        <FAQ />
         <Contact />
       </main>
       <Footer />
