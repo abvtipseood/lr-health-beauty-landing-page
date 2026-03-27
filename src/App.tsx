@@ -847,7 +847,7 @@ const Contact = () => {
                 </div>
                 <div className="flex items-center gap-3">
                   <Mail size={20} className="text-orange-200 shrink-0" />
-                  <span className="break-all text-sm md:text-base">atanas1978online@gmail.com</span>
+                  <span className="whitespace-nowrap text-xs sm:text-sm md:text-base">atanas1978online@gmail.com</span>
                 </div>
               </div>
             </div>
