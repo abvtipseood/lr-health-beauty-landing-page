@@ -826,7 +826,6 @@ const Contact = () => {
 
     const form = e.currentTarget;
     const submitData = new FormData(form);
-    submitData.append('access_key', 'e34f2b33-e154-4076-bfaa-256cdc8d00a1');
     submitData.append('subject', 'Нова заявка от сайта на Атанас');
     submitData.append('from_name', 'Сайт Атанас');
 
@@ -844,7 +843,7 @@ const Contact = () => {
         setFormData({ name: '', phone: '', email: '', income: '' });
         form.reset();
       } else {
-        setResult('Възникна проблем. Моля, опитай отново.');
+        setResult(data.message || 'Възникна проблем. Моля, опитай отново.');
       }
     } catch {
       setResult('Възникна проблем. Моля, опитай отново.');
