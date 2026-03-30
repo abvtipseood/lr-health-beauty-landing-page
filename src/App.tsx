@@ -816,14 +816,41 @@ const FAQ = () => {
 const Contact = () => {
   const [formData, setFormData] = useState({ name: '', phone: '', email: '', income: '' });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [result, setResult] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitted(true);
-      setFormData({ name: '', phone: '', email: '', income: '' });
-    }, 800);
+    setIsSubmitting(true);
+    setResult('Изпращане...');
+
+    const form = e.currentTarget;
+    const submitData = new FormData(form);
+    submitData.append('access_key', 'e34f2b33-e154-4076-bfaa-256cdc8d00a1');
+    submitData.append('subject', 'Нова заявка от сайта на Атанас');
+    submitData.append('from_name', 'Сайт Атанас');
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: submitData,
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setIsSubmitted(true);
+        setResult('Заявката е изпратена успешно.');
+        setFormData({ name: '', phone: '', email: '', income: '' });
+        form.reset();
+      } else {
+        setResult('Възникна проблем. Моля, опитай отново.');
+      }
+    } catch {
+      setResult('Възникна проблем. Моля, опитай отново.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -869,11 +896,13 @@ const Contact = () => {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
+                  <input type="hidden" name="access_key" value="e34f2b33-e154-4076-bfaa-256cdc8d00a1" />
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-1 md:mb-2">Име и фамилия</label>
                     <input 
                       type="text" 
                       id="name" 
+                      name="name"
                       required
                       value={formData.name}
                       onChange={(e) => setFormData({...formData, name: e.target.value})}
@@ -886,6 +915,7 @@ const Contact = () => {
                     <input 
                       type="tel" 
                       id="phone" 
+                      name="phone"
                       required
                       value={formData.phone}
                       onChange={(e) => setFormData({...formData, phone: e.target.value})}
@@ -898,6 +928,7 @@ const Contact = () => {
                     <input 
                       type="email" 
                       id="email" 
+                      name="email"
                       required
                       value={formData.email}
                       onChange={(e) => setFormData({...formData, email: e.target.value})}
@@ -909,6 +940,7 @@ const Contact = () => {
                     <label htmlFor="income" className="block text-sm font-medium text-slate-700 mb-1 md:mb-2">Какъв доход искате да изкарвате?</label>
                     <select 
                       id="income" 
+                      name="income"
                       required
                       value={formData.income}
                       onChange={(e) => setFormData({...formData, income: e.target.value})}
@@ -922,10 +954,16 @@ const Contact = () => {
                   </div>
                   <button 
                     type="submit" 
-                    className="w-full bg-slate-900 hover:bg-slate-800 text-white px-6 py-3 md:px-8 md:py-4 rounded-xl text-base md:text-lg font-semibold transition-all shadow-lg mt-2 md:mt-4"
+                    disabled={isSubmitting}
+                    className="w-full bg-slate-900 hover:bg-slate-800 disabled:bg-slate-500 disabled:cursor-not-allowed text-white px-6 py-3 md:px-8 md:py-4 rounded-xl text-base md:text-lg font-semibold transition-all shadow-lg mt-2 md:mt-4"
                   >
-                    Изпрати заявка
+                    {isSubmitting ? 'Изпращане...' : 'Изпрати заявка'}
                   </button>
+                  {result && (
+                    <p className="text-sm text-center text-slate-600">
+                      {result}
+                    </p>
+                  )}
                   <p className="text-xs text-center text-slate-500 mt-2 md:mt-4">
                     Вашите данни са защитени и ще бъдат използвани само за връзка с вас.
                   </p>
