@@ -876,40 +876,21 @@ const FAQ = () => {
 const Contact = () => {
   const [formData, setFormData] = useState({ name: '', phone: '', email: '', income: '' });
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [result, setResult] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const redirectUrl = 'https://novitelideri.com/?form=success#contact';
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setResult('Изпращане...');
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
 
-    const form = e.currentTarget;
-    const submitData = new FormData(form);
-    submitData.append('subject', 'Нова заявка от сайта на Атанас');
-    submitData.append('from_name', 'Новите Лидери');
-
-    try {
-      const response = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        body: submitData,
-      });
-
-      const data = await response.json();
-
-      if (data.success) {
-        setIsSubmitted(true);
-        setResult('Заявката е изпратена успешно.');
-        setFormData({ name: '', phone: '', email: '', income: '' });
-        form.reset();
-      } else {
-        setResult(data.message || 'Възникна проблем. Моля, опитай отново.');
-      }
-    } catch {
-      setResult('Възникна проблем. Моля, опитай отново.');
-    } finally {
-      setIsSubmitting(false);
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('form') === 'success') {
+      setIsSubmitted(true);
+      window.history.replaceState({}, '', `${window.location.pathname}#contact`);
     }
+  }, []);
+
+  const handleSubmit = () => {
+    setIsSubmitting(true);
   };
 
   return (
@@ -954,8 +935,11 @@ const Contact = () => {
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
+                <form onSubmit={handleSubmit} action="https://api.web3forms.com/submit" method="POST" className="space-y-4 md:space-y-6">
                   <input type="hidden" name="access_key" value="e34f2b33-e154-4076-bfaa-256cdc8d00a1" />
+                  <input type="hidden" name="subject" value="Нова заявка от сайта на Новите Лидери" />
+                  <input type="hidden" name="from_name" value="Новите Лидери" />
+                  <input type="hidden" name="redirect" value={redirectUrl} />
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-1 md:mb-2">Име и фамилия</label>
                     <input 
@@ -1018,11 +1002,6 @@ const Contact = () => {
                   >
                     {isSubmitting ? 'Изпращане...' : 'Изпрати заявка'}
                   </button>
-                  {result && (
-                    <p className="text-sm text-center text-slate-600">
-                      {result}
-                    </p>
-                  )}
                   <p className="text-xs text-center text-slate-500 mt-2 md:mt-4">
                     Вашите данни са защитени и ще бъдат използвани само за връзка с вас.
                   </p>
