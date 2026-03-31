@@ -21,37 +21,37 @@
   <circle cx="1028" cy="106" r="178" fill="#FFFFFF" fill-opacity="0.04"/>
   <circle cx="1117" cy="494" r="235" fill="#FFFFFF" fill-opacity="0.03"/>
 
-  <rect x="86" y="74" width="451" height="60" rx="30" fill="#FFFFFF" fill-opacity="0.08" stroke="#FFFFFF" stroke-opacity="0.16"/>
-  <circle cx="118" cy="104" r="8" fill="#F97316"/>
-  <text x="139" y="112" fill="#FB923C" font-size="28" font-weight="700" font-family="Arial, Helvetica, sans-serif">
+  <rect x="72" y="74" width="420" height="54" rx="27" fill="#FFFFFF" fill-opacity="0.08" stroke="#FFFFFF" stroke-opacity="0.16"/>
+  <circle cx="98" cy="101" r="7" fill="#F97316"/>
+  <text x="117" y="108" fill="#FB923C" font-size="24" font-weight="700" font-family="Arial, Helvetica, sans-serif">
     Допълнителен доход и онлайн бизнес с LR
   </text>
 
-  <text x="86" y="238" fill="#FFFFFF" font-size="84" font-weight="800" font-family="Arial, Helvetica, sans-serif">
-    <tspan x="86" dy="0">Увеличи дохода си</tspan>
-    <tspan x="86" dy="94">и заживей живота,</tspan>
-    <tspan x="86" dy="94">който </tspan>
+  <text x="72" y="214" fill="#FFFFFF" font-size="72" font-weight="800" font-family="Arial, Helvetica, sans-serif">
+    <tspan x="72" dy="0">Увеличи дохода си</tspan>
+    <tspan x="72" dy="82">и заживей живота,</tspan>
+    <tspan x="72" dy="82">който </tspan>
     <tspan fill="url(#accent)">заслужаваш</tspan>
   </text>
 
-  <text x="86" y="490" fill="#CBD5E1" font-size="34" font-weight="400" font-family="Arial, Helvetica, sans-serif">
-    <tspan x="86" dy="0">Научи как да стартираш с LR Health &amp; Beauty,</tspan>
-    <tspan x="86" dy="44">да работиш онлайн и да изградиш</tspan>
-    <tspan x="86" dy="44">допълнителен доход.</tspan>
+  <text x="72" y="432" fill="#CBD5E1" font-size="27" font-weight="500" font-family="Arial, Helvetica, sans-serif">
+    <tspan x="72" dy="0">Научи как да стартираш с LR Health &amp; Beauty,</tspan>
+    <tspan x="72" dy="38">да работиш онлайн и да изградиш</tspan>
+    <tspan x="72" dy="38">допълнителен доход.</tspan>
   </text>
 
   <rect x="86" y="83" width="0" height="0" rx="0" fill="none"/>
 
-  <rect x="862" y="438" width="252" height="88" rx="24" fill="#FFFFFF" fill-opacity="0.08" stroke="#FFFFFF" stroke-opacity="0.18"/>
-  <rect x="886" y="462" width="42" height="42" rx="12" fill="url(#accent)"/>
-  <text x="948" y="489" fill="#FFFFFF" font-size="32" font-weight="800" font-family="Arial, Helvetica, sans-serif">
+  <rect x="880" y="470" width="236" height="82" rx="24" fill="#FFFFFF" fill-opacity="0.08" stroke="#FFFFFF" stroke-opacity="0.18"/>
+  <rect x="902" y="490" width="40" height="40" rx="12" fill="url(#accent)"/>
+  <text x="962" y="516" fill="#FFFFFF" font-size="30" font-weight="800" font-family="Arial, Helvetica, sans-serif">
     N
   </text>
-  <text x="948" y="534" fill="#FFFFFF" font-size="32" font-weight="700" font-family="Arial, Helvetica, sans-serif">
+  <text x="956" y="556" fill="#FFFFFF" font-size="28" font-weight="700" font-family="Arial, Helvetica, sans-serif">
     Новите Лидери
   </text>
 
-  <text x="1114" y="594" text-anchor="end" fill="#94A3B8" font-size="28" font-weight="700" font-family="Arial, Helvetica, sans-serif">
+  <text x="1114" y="596" text-anchor="end" fill="#94A3B8" font-size="24" font-weight="700" font-family="Arial, Helvetica, sans-serif">
     novitelideri.com
   </text>
 </svg>
