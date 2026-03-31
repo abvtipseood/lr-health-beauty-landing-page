@@ -850,7 +850,7 @@ const Contact = () => {
     const form = e.currentTarget;
     const submitData = new FormData(form);
     submitData.append('subject', 'Нова заявка от сайта на Атанас');
-    submitData.append('from_name', 'Сайт Атанас');
+    submitData.append('from_name', 'Новите Лидери');
 
     try {
       const response = await fetch('https://api.web3forms.com/submit', {
