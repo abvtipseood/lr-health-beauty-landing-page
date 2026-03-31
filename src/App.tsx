@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import HCaptcha from '@hcaptcha/react-hcaptcha';
 import { motion, AnimatePresence } from 'motion/react';
 import {
   ArrowRight,
@@ -878,6 +879,7 @@ const Contact = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [result, setResult] = useState('');
+  const [captchaToken, setCaptchaToken] = useState('');
   const redirectUrl = 'https://novitelideri.com/?form=success#contact';
 
   useEffect(() => {
@@ -891,10 +893,7 @@ const Contact = () => {
   }, []);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    const form = e.currentTarget;
-    const hCaptcha = form.querySelector<HTMLTextAreaElement>('textarea[name="h-captcha-response"]');
-
-    if (!hCaptcha?.value) {
+    if (!captchaToken) {
       e.preventDefault();
       setResult('Моля, потвърди captcha защитата преди изпращане.');
       return;
@@ -951,6 +950,7 @@ const Contact = () => {
                   <input type="hidden" name="subject" value="Нова заявка от сайта на Новите Лидери" />
                   <input type="hidden" name="from_name" value="Новите Лидери" />
                   <input type="hidden" name="redirect" value={redirectUrl} />
+                  <input type="hidden" name="h-captcha-response" value={captchaToken} />
                   <input type="checkbox" name="botcheck" className="hidden" style={{ display: 'none' }} tabIndex={-1} autoComplete="off" />
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-1 md:mb-2">Име и фамилия</label>
@@ -1008,11 +1008,19 @@ const Contact = () => {
                     </select>
                   </div>
                   <div>
-                    <div
-                      className="h-captcha"
-                      data-captcha="true"
-                      data-theme="light"
-                    ></div>
+                    <HCaptcha
+                      sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
+                      reCaptchaCompat={false}
+                      onVerify={(token) => {
+                        setCaptchaToken(token);
+                        setResult('');
+                      }}
+                      onExpire={() => setCaptchaToken('')}
+                      onError={() => {
+                        setCaptchaToken('');
+                        setResult('Captcha защитата не можа да се зареди. Моля, опитай отново.');
+                      }}
+                    />
                   </div>
                   <button 
                     type="submit" 
