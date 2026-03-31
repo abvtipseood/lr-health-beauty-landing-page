@@ -1012,7 +1012,6 @@ const Contact = () => {
                       className="h-captcha"
                       data-captcha="true"
                       data-theme="light"
-                      data-sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
                     ></div>
                   </div>
                   <button 
