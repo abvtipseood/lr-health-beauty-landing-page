@@ -1,64 +1,57 @@
 <svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+    <linearGradient id="bg" x1="68" y1="42" x2="1131" y2="611" gradientUnits="userSpaceOnUse">
       <stop stop-color="#0F172A"/>
+      <stop offset="0.55" stop-color="#172554"/>
       <stop offset="1" stop-color="#1E293B"/>
     </linearGradient>
-    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(305 126) rotate(38.7265) scale(581.26 413.949)">
-      <stop stop-color="#334155" stop-opacity="0.7"/>
-      <stop offset="1" stop-color="#334155" stop-opacity="0"/>
-    </radialGradient>
-    <linearGradient id="accent" x1="674" y1="321" x2="926" y2="321" gradientUnits="userSpaceOnUse">
+    <linearGradient id="accent" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
       <stop stop-color="#F59E0B"/>
       <stop offset="1" stop-color="#F97316"/>
     </linearGradient>
-    <filter id="shadow" x="0" y="0" width="1200" height="630" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-      <feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#020617" flood-opacity="0.28"/>
-    </filter>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(930 157) rotate(127.7) scale(524.247 382.554)">
+      <stop stop-color="#F97316" stop-opacity="0.20"/>
+      <stop offset="1" stop-color="#F97316" stop-opacity="0"/>
+    </radialGradient>
   </defs>
 
-  <rect width="1200" height="630" rx="24" fill="url(#bg)"/>
-  <rect width="1200" height="630" rx="24" fill="url(#glow)"/>
+  <rect width="1200" height="630" rx="30" fill="url(#bg)"/>
+  <rect width="1200" height="630" rx="30" fill="url(#glow)"/>
 
-  <g opacity="0.16">
-    <circle cx="1005" cy="162" r="196" fill="#1E40AF"/>
-    <circle cx="1072" cy="544" r="240" fill="#0F172A"/>
-  </g>
+  <circle cx="1028" cy="106" r="178" fill="#FFFFFF" fill-opacity="0.04"/>
+  <circle cx="1117" cy="494" r="235" fill="#FFFFFF" fill-opacity="0.03"/>
 
-  <rect x="83" y="71" width="438" height="58" rx="29" fill="#FFFFFF" fill-opacity="0.08" stroke="#FFFFFF" stroke-opacity="0.22"/>
-  <circle cx="111" cy="100" r="8" fill="#F97316"/>
-  <text x="132" y="107" fill="#FB923C" font-size="28" font-weight="700" font-family="Arial, Helvetica, sans-serif">
-    Възможност за партньорство в 32 държави
+  <rect x="86" y="74" width="451" height="60" rx="30" fill="#FFFFFF" fill-opacity="0.08" stroke="#FFFFFF" stroke-opacity="0.16"/>
+  <circle cx="118" cy="104" r="8" fill="#F97316"/>
+  <text x="139" y="112" fill="#FB923C" font-size="28" font-weight="700" font-family="Arial, Helvetica, sans-serif">
+    Допълнителен доход и онлайн бизнес с LR
   </text>
 
-  <g filter="url(#shadow)">
-    <text x="83" y="228" fill="#FFFFFF" font-size="88" font-weight="800" font-family="Arial, Helvetica, sans-serif">
-      <tspan x="83" dy="0">Увеличи дохода си и</tspan>
-      <tspan x="83" dy="96">заживей живота,</tspan>
-      <tspan x="83" dy="96">който </tspan>
-      <tspan fill="url(#accent)">заслужаваш</tspan>
-    </text>
-  </g>
-
-  <text x="83" y="468" fill="#CBD5E1" font-size="34" font-weight="400" font-family="Arial, Helvetica, sans-serif">
-    <tspan x="83" dy="0">Изгради успешен онлайн бизнес с доказана система,</tspan>
-    <tspan x="83" dy="44">без риск и без предишен опит с подкрепата на</tspan>
-    <tspan x="83" dy="44">LR Health &amp; Beauty.</tspan>
+  <text x="86" y="238" fill="#FFFFFF" font-size="84" font-weight="800" font-family="Arial, Helvetica, sans-serif">
+    <tspan x="86" dy="0">Увеличи дохода си</tspan>
+    <tspan x="86" dy="94">и заживей живота,</tspan>
+    <tspan x="86" dy="94">който </tspan>
+    <tspan fill="url(#accent)">заслужаваш</tspan>
   </text>
 
-  <rect x="83" y="523" width="266" height="79" rx="18" fill="#F97316"/>
-  <text x="216" y="571" text-anchor="middle" fill="#FFFFFF" font-size="34" font-weight="700" font-family="Arial, Helvetica, sans-serif">
-    Започни сега
+  <text x="86" y="490" fill="#CBD5E1" font-size="34" font-weight="400" font-family="Arial, Helvetica, sans-serif">
+    <tspan x="86" dy="0">Научи как да стартираш с LR Health &amp; Beauty,</tspan>
+    <tspan x="86" dy="44">да работиш онлайн и да изградиш</tspan>
+    <tspan x="86" dy="44">допълнителен доход.</tspan>
   </text>
 
-  <rect x="372" y="523" width="300" height="79" rx="18" fill="#FFFFFF" fill-opacity="0.08" stroke="#FFFFFF" stroke-opacity="0.22"/>
-  <circle cx="425" cy="562" r="12" stroke="#FFFFFF" stroke-width="3"/>
-  <polygon points="421,554 421,570 434,562" fill="#FFFFFF"/>
-  <text x="540" y="571" text-anchor="middle" fill="#FFFFFF" font-size="34" font-weight="700" font-family="Arial, Helvetica, sans-serif">
-    Виж как работи
+  <rect x="86" y="83" width="0" height="0" rx="0" fill="none"/>
+
+  <rect x="862" y="438" width="252" height="88" rx="24" fill="#FFFFFF" fill-opacity="0.08" stroke="#FFFFFF" stroke-opacity="0.18"/>
+  <rect x="886" y="462" width="42" height="42" rx="12" fill="url(#accent)"/>
+  <text x="948" y="489" fill="#FFFFFF" font-size="32" font-weight="800" font-family="Arial, Helvetica, sans-serif">
+    N
+  </text>
+  <text x="948" y="534" fill="#FFFFFF" font-size="32" font-weight="700" font-family="Arial, Helvetica, sans-serif">
+    Новите Лидери
   </text>
 
-  <text x="1010" y="574" text-anchor="end" fill="#94A3B8" font-size="28" font-weight="700" font-family="Arial, Helvetica, sans-serif">
+  <text x="1114" y="594" text-anchor="end" fill="#94A3B8" font-size="28" font-weight="700" font-family="Arial, Helvetica, sans-serif">
     novitelideri.com
   </text>
 </svg>
