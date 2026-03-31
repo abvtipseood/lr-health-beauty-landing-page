@@ -460,7 +460,7 @@ const About = () => {
           </h2>
         </FadeIn>
 
-        <div className="grid md:grid-cols-2 gap-8 items-stretch">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
           <FadeIn delay={0.1} className="bg-slate-800/50 rounded-3xl p-8 border border-slate-700 flex flex-col h-full hover:bg-slate-800 transition-colors">
             <div className="flex items-center gap-6 mb-8">
               <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-slate-700 border-2 border-slate-600 flex-shrink-0 flex items-center justify-center overflow-hidden">
@@ -503,6 +503,29 @@ const About = () => {
               </ul>
               <p className="mt-auto pt-6 border-t border-slate-700/50 font-medium text-white">
                 Това е първата ми стъпка към финансова независимост.
+              </p>
+            </div>
+          </FadeIn>
+
+          <FadeIn delay={0.3} className="bg-slate-800/50 rounded-3xl p-8 border border-slate-700 flex flex-col h-full hover:bg-slate-800 transition-colors">
+            <div className="flex items-center gap-6 mb-8">
+              <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-slate-700 border-2 border-slate-600 flex-shrink-0 flex items-center justify-center overflow-hidden">
+                <img src="https://i.ibb.co/6JpBbhWZ/image.png" alt="Виктория Атанасова" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+              </div>
+              <div>
+                <h3 className="text-xl md:text-2xl text-orange-400 font-medium mb-1">Виктория Атанасова</h3>
+                <p className="text-slate-400 text-sm md:text-base">Партньор</p>
+              </div>
+            </div>
+            <div className="text-slate-300 text-base md:text-lg leading-relaxed flex-grow flex flex-col">
+              <p className="mb-4">За мен LR е възможност да:</p>
+              <ul className="space-y-2 mb-8 ml-5 list-disc marker:text-orange-500">
+                <li>развия собствен бизнес</li>
+                <li>усъвършенствам комуникационните си умения</li>
+                <li>помагам на хората за тяхното здраве и красота</li>
+              </ul>
+              <p className="mt-auto pt-6 border-t border-slate-700/50 font-medium text-white">
+                Отговорна, позитивна и целеустремена, се стремя към постоянно личностно и професионално израстване.
               </p>
             </div>
           </FadeIn>
