@@ -40,6 +40,60 @@ const FadeIn = ({ children, delay = 0, className = "" }: { children: React.React
   </motion.div>
 );
 
+const YouTubeLiteEmbed = ({
+  videoId,
+  title,
+  start = 0,
+}: {
+  videoId: string;
+  title: string;
+  start?: number;
+}) => {
+  const [isActive, setIsActive] = useState(false);
+  const videoUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1${start ? `&start=${start}` : ''}`;
+  const thumbnailUrl = `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
+
+  return (
+    <div className="relative w-full aspect-video bg-slate-100 rounded-3xl overflow-hidden shadow-lg border border-slate-200">
+      {isActive ? (
+        <iframe
+          className="absolute inset-0 w-full h-full"
+          src={videoUrl}
+          title={title}
+          loading="lazy"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
+        ></iframe>
+      ) : (
+        <button
+          type="button"
+          onClick={() => setIsActive(true)}
+          className="group absolute inset-0 w-full h-full text-left"
+          aria-label={`Пусни видео: ${title}`}
+        >
+          <img
+            src={thumbnailUrl}
+            alt={title}
+            loading="lazy"
+            decoding="async"
+            referrerPolicy="no-referrer"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-slate-900/35 group-hover:bg-slate-900/25 transition-colors"></div>
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="flex items-center gap-3 rounded-full bg-white/92 text-slate-900 px-5 py-3 shadow-lg">
+              <PlayCircle size={26} className="text-orange-500" />
+              <span className="font-semibold">Пусни видеото</span>
+            </div>
+          </div>
+        </button>
+      )}
+    </div>
+  );
+};
+
 // --- Sections ---
 
 const Navbar = () => {
@@ -123,6 +177,9 @@ const Hero = () => {
         <img 
           src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop" 
           alt="Success Lifestyle" 
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
           referrerPolicy="no-referrer"
           className="w-full h-full object-cover opacity-30"
         />
@@ -464,7 +521,7 @@ const About = () => {
           <FadeIn delay={0.1} className="bg-slate-800/50 rounded-3xl p-8 border border-slate-700 flex flex-col h-full hover:bg-slate-800 transition-colors">
             <div className="flex items-center gap-6 mb-8">
               <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-slate-700 border-2 border-slate-600 flex-shrink-0 flex items-center justify-center overflow-hidden">
-                <img src="https://i.ibb.co/dwK59Wts/DANIELA.jpg" alt="Даниела Марковска" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+              <img src="https://i.ibb.co/dwK59Wts/DANIELA.jpg" alt="Даниела Марковска" loading="lazy" decoding="async" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
               </div>
               <div>
                 <h3 className="text-xl md:text-2xl text-orange-400 font-medium mb-1">Даниела Марковска</h3>
@@ -487,7 +544,7 @@ const About = () => {
           <FadeIn delay={0.2} className="bg-slate-800/50 rounded-3xl p-8 border border-slate-700 flex flex-col h-full hover:bg-slate-800 transition-colors">
             <div className="flex items-center gap-6 mb-8">
               <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-slate-700 border-2 border-slate-600 flex-shrink-0 flex items-center justify-center overflow-hidden">
-                <img src="https://i.ibb.co/KRKXSxq/VIKTORIA.jpg" alt="Виктория Ангелова" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                <img src="https://i.ibb.co/KRKXSxq/VIKTORIA.jpg" alt="Виктория Ангелова" loading="lazy" decoding="async" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
               </div>
               <div>
                 <h3 className="text-xl md:text-2xl text-orange-400 font-medium mb-1">Виктория Ангелова</h3>
@@ -510,7 +567,7 @@ const About = () => {
           <FadeIn delay={0.3} className="bg-slate-800/50 rounded-3xl p-8 border border-slate-700 flex flex-col h-full hover:bg-slate-800 transition-colors">
             <div className="flex items-center gap-6 mb-8">
               <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-slate-700 border-2 border-slate-600 flex-shrink-0 flex items-center justify-center overflow-hidden">
-                <img src="https://i.ibb.co/6JpBbhWZ/image.png" alt="Виктория Атанасова" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+                <img src="https://i.ibb.co/6JpBbhWZ/image.png" alt="Виктория Атанасова" loading="lazy" decoding="async" className="w-full h-full object-cover" referrerPolicy="no-referrer" />
               </div>
               <div>
                 <h3 className="text-xl md:text-2xl text-orange-400 font-medium mb-1">Виктория Атанасова</h3>
@@ -551,32 +608,12 @@ const VideoSection = () => {
         <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
           <FadeIn delay={0.1} className="flex flex-col">
             <h3 className="text-2xl font-bold text-slate-900 mb-4 text-center">Бизнес моделът на LR</h3>
-            <div className="relative w-full aspect-video bg-slate-100 rounded-3xl overflow-hidden shadow-lg border border-slate-200">
-              <iframe 
-                className="absolute inset-0 w-full h-full"
-                src="https://www.youtube.com/embed/dCGUVkG3Efg?start=4" 
-                title="Бизнес моделът на LR" 
-                frameBorder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                referrerPolicy="strict-origin-when-cross-origin" 
-                allowFullScreen
-              ></iframe>
-            </div>
+            <YouTubeLiteEmbed videoId="dCGUVkG3Efg" start={4} title="Бизнес моделът на LR" />
           </FadeIn>
 
           <FadeIn delay={0.2} className="flex flex-col">
             <h3 className="text-2xl font-bold text-slate-900 mb-4 text-center">Продуктите на LR</h3>
-            <div className="relative w-full aspect-video bg-slate-100 rounded-3xl overflow-hidden shadow-lg border border-slate-200">
-              <iframe 
-                className="absolute inset-0 w-full h-full"
-                src="https://www.youtube.com/embed/SBSxnxQP9k0" 
-                title="Продуктите на LR" 
-                frameBorder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                referrerPolicy="strict-origin-when-cross-origin" 
-                allowFullScreen
-              ></iframe>
-            </div>
+            <YouTubeLiteEmbed videoId="SBSxnxQP9k0" title="Продуктите на LR" />
           </FadeIn>
         </div>
       </div>
@@ -591,8 +628,8 @@ const Products = () => {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <FadeIn>
             <div className="grid grid-cols-2 gap-4">
-              <img src="https://i.ibb.co/fYJSbrhy/image.png" alt="Health products" referrerPolicy="no-referrer" className="rounded-2xl shadow-md h-64 w-full object-cover" />
-              <img src="https://images.unsplash.com/photo-1550831107-1553da8c8464?q=80&w=1974&auto=format&fit=crop" alt="Beauty products" referrerPolicy="no-referrer" className="rounded-2xl shadow-md h-64 w-full object-cover mt-8" />
+              <img src="https://i.ibb.co/fYJSbrhy/image.png" alt="Health products" loading="lazy" decoding="async" referrerPolicy="no-referrer" className="rounded-2xl shadow-md h-64 w-full object-cover" />
+              <img src="https://images.unsplash.com/photo-1550831107-1553da8c8464?q=80&w=1974&auto=format&fit=crop" alt="Beauty products" loading="lazy" decoding="async" referrerPolicy="no-referrer" className="rounded-2xl shadow-md h-64 w-full object-cover mt-8" />
             </div>
           </FadeIn>
           
