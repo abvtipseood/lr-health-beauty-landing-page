@@ -877,6 +877,7 @@ const Contact = () => {
   const [formData, setFormData] = useState({ name: '', phone: '', email: '', income: '' });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [result, setResult] = useState('');
   const redirectUrl = 'https://novitelideri.com/?form=success#contact';
 
   useEffect(() => {
@@ -889,8 +890,18 @@ const Contact = () => {
     }
   }, []);
 
-  const handleSubmit = () => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const form = e.currentTarget;
+    const hCaptcha = form.querySelector<HTMLTextAreaElement>('textarea[name="h-captcha-response"]');
+
+    if (!hCaptcha?.value) {
+      e.preventDefault();
+      setResult('Моля, потвърди captcha защитата преди изпращане.');
+      return;
+    }
+
     setIsSubmitting(true);
+    setResult('Изпращане...');
   };
 
   return (
@@ -940,6 +951,7 @@ const Contact = () => {
                   <input type="hidden" name="subject" value="Нова заявка от сайта на Новите Лидери" />
                   <input type="hidden" name="from_name" value="Новите Лидери" />
                   <input type="hidden" name="redirect" value={redirectUrl} />
+                  <input type="checkbox" name="botcheck" className="hidden" style={{ display: 'none' }} tabIndex={-1} autoComplete="off" />
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-1 md:mb-2">Име и фамилия</label>
                     <input 
@@ -995,6 +1007,14 @@ const Contact = () => {
                       <option value="1000+ евро">1000+ евро</option>
                     </select>
                   </div>
+                  <div>
+                    <div
+                      className="h-captcha"
+                      data-captcha="true"
+                      data-theme="light"
+                      data-sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2"
+                    ></div>
+                  </div>
                   <button 
                     type="submit" 
                     disabled={isSubmitting}
@@ -1002,6 +1022,11 @@ const Contact = () => {
                   >
                     {isSubmitting ? 'Изпращане...' : 'Изпрати заявка'}
                   </button>
+                  {result && (
+                    <p className="text-sm text-center text-slate-600">
+                      {result}
+                    </p>
+                  )}
                   <p className="text-xs text-center text-slate-500 mt-2 md:mt-4">
                     Вашите данни са защитени и ще бъдат използвани само за връзка с вас.
                   </p>
