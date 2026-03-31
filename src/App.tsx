@@ -117,7 +117,7 @@ const Navbar = () => {
     <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-slate-900/95 backdrop-blur-md shadow-lg py-4' : 'bg-transparent py-6'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
         <a href="#" className="text-2xl font-heading font-bold text-white tracking-tight">
-          Атанас<span className="text-orange-500">.</span>
+          Новите <span className="text-orange-500">Лидери</span>
         </a>
         
         <nav className="hidden md:flex items-center gap-8">
@@ -1043,7 +1043,7 @@ const Footer = () => {
         <div className="grid md:grid-cols-3 gap-8 mb-8">
           <div>
             <a href="#" className="text-2xl font-heading font-bold text-white tracking-tight mb-4 inline-block">
-              Атанас<span className="text-orange-500">.</span>
+              Новите <span className="text-orange-500">Лидери</span>
             </a>
             <p className="text-sm max-w-xs">
               Независим партньор на LR Health & Beauty. Помагам на хората да изградят успешен онлайн бизнес и да подобрят начина си на живот.
