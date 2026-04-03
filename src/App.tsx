@@ -41,6 +41,19 @@ const FadeIn = ({ children, delay = 0, className = "" }: { children: React.React
   </motion.div>
 );
 
+const scrollToSection = (href: string) => {
+  const sectionId = href.replace('#', '');
+  const element = document.getElementById(sectionId);
+
+  if (!element) return;
+
+  const headerOffset = 110;
+  const top = element.getBoundingClientRect().top + window.scrollY - headerOffset;
+
+  window.history.replaceState({}, '', href);
+  window.scrollTo({ top, behavior: 'smooth' });
+};
+
 const YouTubeLiteEmbed = ({
   videoId,
   title,
@@ -114,6 +127,15 @@ const Navbar = () => {
     { name: 'Продукти', href: '#products' },
   ];
 
+  const handleNavClick = (href: string) => (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    setIsMobileMenuOpen(false);
+
+    window.setTimeout(() => {
+      scrollToSection(href);
+    }, 50);
+  };
+
   return (
     <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-slate-900/95 backdrop-blur-md shadow-lg py-4' : 'bg-transparent py-6'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
@@ -123,11 +145,11 @@ const Navbar = () => {
         
         <nav className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
-            <a key={link.name} href={link.href} className="text-sm font-medium text-slate-300 hover:text-white transition-colors">
+            <a key={link.name} href={link.href} onClick={handleNavClick(link.href)} className="text-sm font-medium text-slate-300 hover:text-white transition-colors">
               {link.name}
             </a>
           ))}
-          <a href="#contact" className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2.5 rounded-full text-sm font-semibold transition-all shadow-lg shadow-orange-500/30">
+          <a href="#contact" onClick={handleNavClick('#contact')} className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2.5 rounded-full text-sm font-semibold transition-all shadow-lg shadow-orange-500/30">
             Започни сега
           </a>
         </nav>
@@ -150,7 +172,7 @@ const Navbar = () => {
                 <a
                   key={link.name}
                   href={link.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={handleNavClick(link.href)}
                   className="block px-3 py-3 text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800 rounded-md"
                 >
                   {link.name}
@@ -158,7 +180,7 @@ const Navbar = () => {
               ))}
               <a
                 href="#contact"
-                onClick={() => setIsMobileMenuOpen(false)}
+                onClick={handleNavClick('#contact')}
                 className="block w-full text-center mt-4 bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-xl text-base font-semibold transition-all"
               >
                 Започни сега
