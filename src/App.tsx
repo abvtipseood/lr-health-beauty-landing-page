@@ -939,6 +939,9 @@ const Contact = () => {
       const data = await response.json();
 
       if (data.success) {
+        if (typeof window !== 'undefined' && typeof (window as typeof window & { fbq?: (...args: unknown[]) => void }).fbq === 'function') {
+          (window as typeof window & { fbq: (...args: unknown[]) => void }).fbq('track', 'Lead');
+        }
         setIsSubmitted(true);
         setResult('Заявката е изпратена успешно.');
         setFormData({ name: '', phone: '', email: '', income: '' });
